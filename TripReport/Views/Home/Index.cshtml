@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TripAllViewModel>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<p class="h5">Списък със заявените разходки към @DateTime.Now</p>
+<br />
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th>Начало</th>
+            <th>Време</th>
+            <th>Заявил</th>
+            <th>Лице за контакт</th>
+            <th>Брой лица</th>
+            <th>Вид плащане</th>
+            <th>Валидна</th>
+        </tr>
+
+        @foreach (var trip in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x=>trip.FromDate)</td>
+                <td>@Html.DisplayFor(x=>trip.Duration)</td>
+                <td>@trip.CustomerName</td>
+                <td>@trip.ContactPerson</td>
+                <td>@trip.PersonCount</td>
+                <td>@trip.Payment</td>
+                @if (trip.IsActive == true)
+                {
+                    <td>Да</td>
+                }
+                else
+                {
+                    <td>Не</td>
+                }
+            </tr>
+        }
+    </tbody>  .
+</table>

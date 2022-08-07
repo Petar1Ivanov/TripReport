@@ -1,0 +1,47 @@
+﻿@model AddTripFormModel;
+<form method="post">
+    <div class="row col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">      
+            <div class="mb-3">
+                <label asp-for="FromDate"></label>
+                <input asp-for="FromDate" class="form-control"  placeholder=@DateTime.Now>               
+            </div>
+            <div class="mb-3">
+                <label asp-for="DurationId"></label>
+                <select asp-for="DurationId" class="form-control">
+                        @foreach (var item in Model.Durations)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>  
+                 
+            </div>
+            <div class="mb-3">
+                <label asp-for="CustomerName"></label>
+                <input asp-for="CustomerName" class="form-control">
+                <span asp-validation-for="CustomerName" class="small text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ContactPerson"></label>
+                <input asp-for="ContactPerson" class="form-control">
+                <span asp-validation-for="ContactPerson" class="small text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="PersonCount"></label>
+                <input asp-for="PersonCount" class="form-control">
+                <span asp-validation-for="PersonCount" class="small text-danger"></span>
+            </div>
+            <div>
+                <div class="mb-3">
+                    <label asp-for="PaymentId"></label>
+                    <select asp-for="PaymentId" class="form-control">
+                        @foreach (var item in Model.Payments)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <input class="btn-primary" type="submit" value="Запиши" />        
+    </div>
+</form>
+
